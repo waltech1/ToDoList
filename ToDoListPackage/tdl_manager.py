@@ -30,6 +30,7 @@ def generate_list_id() -> str:
 def generate_task_id(list_id: str) -> str:
     """Create an ID for a new task"""
     n = len(tdl[list_id]) + 1
+
     return list_id + 'T' + str(n)
 
 
@@ -41,9 +42,43 @@ def create_new_list() -> str:
     return new_id
 
 
-def create_new_task(list_id: str, task: str) -> str:
+def create_new_task(list_id: str, title: str, task: str) -> str:
     """Add a new task to a specific list and return its ID."""
     new_id = generate_task_id(list_id)
-    tdl[list_id][new_id] = task
+
+    tdl[list_id][new_id] = {
+        "Title": title,
+        "Task": task
+    }
 
     return new_id
+
+
+def get_task(task_id: str) -> str:
+    """Search and return the task with the given ID"""
+    list_id = task_id.split("T")[0]
+
+    return tdl[list_id][task_id]
+
+
+def search_task(title: str = None, content: str = None) -> str:
+    """
+    Search for a task matching the given title or task content.
+    Return the task if found, else return None
+    """
+    if title is None and content is None:
+        return None
+
+    # Iterate all tasklists to find the one that meets the criteria
+    for todo in tdl.values():
+        for task in todo.values():
+            # Check if the title was specified
+            # Then check if the title is the one searched
+            if title and title.lower() in task["Title"].lower():
+                return task
+            # Check if the content was specified
+            # Then check if the content is the one searched
+            if content and content.lower() in task["Task"].lower():
+                return task
+
+    return None

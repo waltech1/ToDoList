@@ -9,8 +9,16 @@ from ToDoListPackage import tdl_manager
 
 list_id = tdl_manager.create_new_list()
 
-tdl_manager.create_new_task(list_id, "Finish the TP Wiki")
+task_id = tdl_manager.create_new_task(
+    list_id,
+    "Finish the TP Wiki",
+    "Read all the documentations and watch all the videos"
+)
 
 print(tdl_manager.get_all_lists())
 
 print(tdl_manager.get_list(list_id))
+
+print(tdl_manager.get_task(task_id))
+
+print(tdl_manager.search_task("wiki"))

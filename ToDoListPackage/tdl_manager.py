@@ -90,8 +90,8 @@ def update_task(task_id:  str, title: str = None, content: str = None) -> bool:
 
     # Make sure that the ID is in the To Do List
     try:
-        task =  tdl[list_id][task_id]
-    except:
+        task = tdl[list_id][task_id]
+    except KeyError:
         return False
 
     # There are no changes to make here
@@ -115,5 +115,5 @@ def delete_task(task_id: str) -> bool:
     try:
         del tdl[list_id][task_id]
         return True
-    except:
+    except KeyError:
         return False

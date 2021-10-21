@@ -122,7 +122,21 @@ while True:
                 print("\n(!) Something went wrong...")
 
     elif option == "8":
-        print()
+        # Delete a specific task
+        task_id = input('Task ID: ')
+        task = tdl_manager.get_task(task_id)
+
+        if task is None:
+            print("\n>> We couldn't find a task with ID: " + task_id)
+        else:
+            print("\n>> " + task['Title'] + ": " + task['Task'])
+            confirm = input("(!) Are you sure you want to delete this task? This can't be undone (y/n): ")
+
+            if confirm == "y":
+                tdl_manager.delete_task(task_id)
+                print("\n>> Task deleted")
+            else:
+                print("\n>> The task was not deleted")
 
     elif option == "9":
         print()

@@ -22,3 +22,8 @@ print(tdl_manager.get_list(list_id))
 print(tdl_manager.get_task(task_id))
 
 print(tdl_manager.search_task("wiki"))
+
+print(tdl_manager.update_task("k", "Do the TP Wiki"))
+print(tdl_manager.update_task(task_id, content="Read all the docs and watch all the tutorials"))
+
+print(tdl_manager.get_task(task_id))

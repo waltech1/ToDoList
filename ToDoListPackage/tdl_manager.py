@@ -82,3 +82,26 @@ def search_task(title: str = None, content: str = None) -> str:
                 return task
 
     return None
+
+
+def update_task(task_id:  str, title: str = None, content: str = None) -> bool:
+    """Modify an existing task by its ID"""
+    list_id = task_id.split("T")[0]
+
+    # Make sure that the ID is in the To Do List
+    try:
+        task =  tdl[list_id][task_id]
+    except:
+        return False
+
+    # There are no changes to make here
+    if title is None and content is None:
+        return False
+
+    if title:
+        task['Title'] = title
+
+    if content:
+        task['Task'] = content
+
+    return True

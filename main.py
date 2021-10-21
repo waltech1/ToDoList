@@ -89,7 +89,14 @@ while True:
                 print("  - " + task) 
 
     elif option == "5":
-        print()
+        # Obtain a specific task by id
+        task_id = input('Task ID: ')
+        task = tdl_manager.get_task(task_id)
+
+        if task is None:
+            print("\n>> We couldn't find a task with ID: " + task_id)
+        else:
+            print("\n>> " + task['Title'] + ": " + task['Task'])
 
     elif option == "6":
         print()

@@ -146,7 +146,11 @@ while True:
         utils.print_tasks({"Best match": task})
 
     elif option == "10":
-        print()
+        # Search task by contents
+        content = input('Task content: ')
+        task = tdl_manager.search_task(content=content)
+
+        utils.print_tasks({"Best match": task})
 
     elif option == "11":
         print(">> Have a nice day!")

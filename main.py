@@ -63,7 +63,16 @@ while True:
         print(">> Task ID: " + task_id)
 
     elif option == "3":
-        print()
+        # List all the current tasks
+        print(">> Displaying all your current tasks\n")
+        
+        tdls = tdl_manager.get_all_lists()
+        
+        for v in tdls.values():
+            tasks_values = list(map(utils.get_list_titles, v.values(), v.keys()))
+
+            for task in tasks_values:
+                print("  - " + task)
 
     elif option == "4":
         # List all todo lists

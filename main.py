@@ -92,7 +92,13 @@ while True:
             print("\n>> " + task['Title'] + ": " + task['Task'])
 
     elif option == "6":
-        print()
+        # Obtain a specific list by id
+        list_id = input('List ID: ')
+
+        li = tdl_manager.get_list(list_id)
+
+        print("\n* List: " + list_id)
+        utils.print_tasks(li)
 
     elif option == "7":
         print()

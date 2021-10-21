@@ -30,6 +30,7 @@ def generate_list_id() -> str:
 def generate_task_id(list_id: str) -> str:
     """Create an ID for a new task"""
     n = len(tdl[list_id]) + 1
+
     return list_id + 'T' + str(n)
 
 
@@ -47,3 +48,10 @@ def create_new_task(list_id: str, task: str) -> str:
     tdl[list_id][new_id] = task
 
     return new_id
+
+
+def get_task(task_id: str) -> str:
+    """Search and return the task with the given ID"""
+    list_id = task_id.split("T")[0]
+
+    return tdl[list_id][task_id]

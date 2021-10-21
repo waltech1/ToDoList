@@ -69,10 +69,7 @@ while True:
         tdls = tdl_manager.get_all_lists()
         
         for v in tdls.values():
-            tasks_values = list(map(utils.get_list_titles, v.values(), v.keys()))
-
-            for task in tasks_values:
-                print("  - " + task)
+            utils.print_tasks(v)
 
     elif option == "4":
         # List all todo lists
@@ -82,11 +79,7 @@ while True:
         
         for k, v in zip(tdls.keys(), tdls.values()):
             print("* List: " + k)
-
-            tasks_values = list(map(utils.get_list_titles, v.values(), v.keys()))
-
-            for task in tasks_values:
-                print("  - " + task) 
+            utils.print_tasks(v)
 
     elif option == "5":
         # Obtain a specific task by id

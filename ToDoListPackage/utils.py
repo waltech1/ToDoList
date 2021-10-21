@@ -13,3 +13,13 @@ def get_list_titles(task: dict, id: str) -> str:
     with only the titles of its tasks.
     """
     return "("+id+") " + task['Title'] + ": " + task['Task']
+
+
+def print_tasks(task: dict):
+    """
+    Iterate over a To-Do list and print each of its tasks.
+    """
+    tasks_values = list(map(get_list_titles, task.values(), task.keys()))
+
+    for task in tasks_values:
+        print("  - " + task)

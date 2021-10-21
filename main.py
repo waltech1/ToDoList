@@ -139,7 +139,11 @@ while True:
                 print("\n>> The task was not deleted")
 
     elif option == "9":
-        print()
+        # Search for a task using its title
+        title = input('Task Title: ')
+        task = tdl_manager.search_task(title=title)
+
+        utils.print_tasks({"Best match": task})
 
     elif option == "10":
         print()

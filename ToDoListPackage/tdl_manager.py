@@ -61,7 +61,7 @@ def get_task(task_id: str) -> str:
     return tdl[list_id][task_id]
 
 
-def search_task(title: str = None, content: str = None) -> str:
+def search_task(title: str = None, content: str = None) -> dict:
     """
     Search for a task matching the given title or task content.
     Return the task if found, else return None

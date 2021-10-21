@@ -101,7 +101,25 @@ while True:
         utils.print_tasks(li)
 
     elif option == "7":
-        print()
+        # Modify a specific task by id
+        task_id = input('Task ID: ')
+        task = tdl_manager.get_task(task_id)
+
+        if task is None:
+            print("\n>> We couldn't find a task with ID: " + task_id)
+        else:
+            print("\n>> " + task['Title'] + ": " + task['Task'])
+
+            print(">> Complete the info below (press ENTER if no changes are needed)")
+            title = input('Task title: ')
+            content = input('Task content: ')
+
+            updates = tdl_manager.update_task(task_id, title, content)
+
+            if updates:
+                print("\n>> Done!")
+            else:
+                print("\n(!) Something went wrong...")
 
     elif option == "8":
         print()

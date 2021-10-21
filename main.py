@@ -15,6 +15,12 @@ task_id = tdl_manager.create_new_task(
     "Read all the documentations and watch all the videos"
 )
 
+task_id = tdl_manager.create_new_task(
+    list_id,
+    "Do the week 1 Assignment",
+    "Make a To Do List in python with some CRUD operations"
+)
+
 print(tdl_manager.get_all_lists())
 
 print(tdl_manager.get_list(list_id))
@@ -25,5 +31,9 @@ print(tdl_manager.search_task("wiki"))
 
 print(tdl_manager.update_task("k", "Do the TP Wiki"))
 print(tdl_manager.update_task(task_id, content="Read all the docs and watch all the tutorials"))
-
 print(tdl_manager.get_task(task_id))
+
+
+print(tdl_manager.get_list(list_id))
+print(tdl_manager.delete_task(task_id))
+print(tdl_manager.get_list(list_id))

@@ -105,3 +105,15 @@ def update_task(task_id:  str, title: str = None, content: str = None) -> bool:
         task['Task'] = content
 
     return True
+
+
+def delete_task(task_id: str) -> bool:
+    """Remove the task with the given ID"""
+    list_id = task_id.split("T")[0]
+
+    # Make sure that the ID is in the To Do List
+    try:
+        del tdl[list_id][task_id]
+        return True
+    except:
+        return False

@@ -44,7 +44,10 @@ def create_new_list() -> str:
 
 def create_new_task(list_id: str, title: str, task: str) -> str:
     """Add a new task to a specific list and return its ID."""
-    new_id = generate_task_id(list_id)
+    try:
+        new_id = generate_task_id(list_id)
+    except KeyError:
+        return None
 
     tdl[list_id][new_id] = {
         "Title": title,

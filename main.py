@@ -59,8 +59,11 @@ while True:
 
         task_id = tdl_manager.create_new_task(list_id, title, content)
 
-        print("\n>> Done!")
-        print(">> Task ID: " + task_id)
+        if task_id is None:
+            print("\n(!) List '" + list_id + "' not found.")
+        else:
+            print("\n>> Done!")
+            print(">> Task ID: " + task_id)
 
     elif option == "3":
         # List all the current tasks

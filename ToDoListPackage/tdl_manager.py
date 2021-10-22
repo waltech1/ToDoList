@@ -18,7 +18,10 @@ def get_all_lists() -> dict:
 
 def get_list(list_id: str) -> dict:
     """Return the specified To Do List by its ID"""
-    return tdl[list_id]
+    try:
+        return tdl[list_id]
+    except KeyError:
+        return None
 
 
 def generate_list_id() -> str:

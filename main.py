@@ -90,7 +90,7 @@ while True:
         task = tdl_manager.get_task(task_id)
 
         if task is None:
-            print("\n>> We couldn't find a task with ID: " + task_id)
+            print("\n(!) We couldn't find a task with ID: " + task_id)
         else:
             print("\n>> " + task['Title'] + ": " + task['Task'])
 
@@ -100,8 +100,11 @@ while True:
 
         li = tdl_manager.get_list(list_id)
 
-        print("\n* List: " + list_id)
-        utils.print_tasks(li)
+        if li is None:
+            print("\n(!) We couldn't find a list with ID: " + list_id)
+        else:
+            print("\n* List: " + list_id)
+            utils.print_tasks(li)
 
     elif option == "7":
         # Modify a specific task by id

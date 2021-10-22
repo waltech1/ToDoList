@@ -59,8 +59,11 @@ while True:
 
         task_id = tdl_manager.create_new_task(list_id, title, content)
 
-        print("\n>> Done!")
-        print(">> Task ID: " + task_id)
+        if task_id is None:
+            print("\n(!) List '" + list_id + "' not found.")
+        else:
+            print("\n>> Done!")
+            print(">> Task ID: " + task_id)
 
     elif option == "3":
         # List all the current tasks
@@ -87,7 +90,7 @@ while True:
         task = tdl_manager.get_task(task_id)
 
         if task is None:
-            print("\n>> We couldn't find a task with ID: " + task_id)
+            print("\n(!) We couldn't find a task with ID: " + task_id)
         else:
             print("\n>> " + task['Title'] + ": " + task['Task'])
 
@@ -97,8 +100,11 @@ while True:
 
         li = tdl_manager.get_list(list_id)
 
-        print("\n* List: " + list_id)
-        utils.print_tasks(li)
+        if li is None:
+            print("\n(!) We couldn't find a list with ID: " + list_id)
+        else:
+            print("\n* List: " + list_id)
+            utils.print_tasks(li)
 
     elif option == "7":
         # Modify a specific task by id
@@ -106,7 +112,7 @@ while True:
         task = tdl_manager.get_task(task_id)
 
         if task is None:
-            print("\n>> We couldn't find a task with ID: " + task_id)
+            print("\n(!) We couldn't find a task with ID: " + task_id)
         else:
             print("\n>> " + task['Title'] + ": " + task['Task'])
 
@@ -127,7 +133,7 @@ while True:
         task = tdl_manager.get_task(task_id)
 
         if task is None:
-            print("\n>> We couldn't find a task with ID: " + task_id)
+            print("\n(!) We couldn't find a task with ID: " + task_id)
         else:
             print("\n>> " + task['Title'] + ": " + task['Task'])
             print("(!) This can't be undone")
@@ -144,14 +150,20 @@ while True:
         title = input('Task Title: ')
         task = tdl_manager.search_task(title=title)
 
-        utils.print_tasks({"Best match": task})
+        if task is None:
+            print("\n(!) No task match with the title: " + title)
+        else:
+            utils.print_tasks({"Best match": task})
 
     elif option == "10":
         # Search task by contents
         content = input('Task content: ')
         task = tdl_manager.search_task(content=content)
 
-        utils.print_tasks({"Best match": task})
+        if task is None:
+            print("\n(!) No task match with: " + content)
+        else:
+            utils.print_tasks({"Best match": task})
 
     elif option == "11":
         print(">> Have a nice day!")

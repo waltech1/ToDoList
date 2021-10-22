@@ -10,14 +10,14 @@ from ToDoListPackage import tdl_manager, utils
 
 print("""
 
- ███████████             ██████████               █████        ███           █████
-░█░░░███░░░█            ░░███░░░░███             ░░███        ░░░           ░░███
-░   ░███  ░   ██████     ░███   ░░███  ██████     ░███        ████   █████  ███████
-    ░███     ███░░███    ░███    ░███ ███░░███    ░███       ░░███  ███░░  ░░░███░
-    ░███    ░███ ░███    ░███    ░███░███ ░███    ░███        ░███ ░░█████   ░███
+ ███████████             ██████████               █████        ███           █████   
+░█░░░███░░░█            ░░███░░░░███             ░░███        ░░░           ░░███    
+░   ░███  ░   ██████     ░███   ░░███  ██████     ░███        ████   █████  ███████  
+    ░███     ███░░███    ░███    ░███ ███░░███    ░███       ░░███  ███░░  ░░░███░   
+    ░███    ░███ ░███    ░███    ░███░███ ░███    ░███        ░███ ░░█████   ░███    
     ░███    ░███ ░███    ░███    ███ ░███ ░███    ░███      █ ░███  ░░░░███  ░███ ███
-    █████   ░░██████     ██████████  ░░██████     ███████████ █████ ██████   ░░█████
-   ░░░░░     ░░░░░░     ░░░░░░░░░░    ░░░░░░     ░░░░░░░░░░░ ░░░░░ ░░░░░░     ░░░░░
+    █████   ░░██████     ██████████  ░░██████     ███████████ █████ ██████   ░░█████ 
+   ░░░░░     ░░░░░░     ░░░░░░░░░░    ░░░░░░     ░░░░░░░░░░░ ░░░░░ ░░░░░░     ░░░░░  
 
 > Version: 0.1
 > Author: Walter Saldaña
@@ -26,17 +26,17 @@ print("""
 
 menu = """
 Select an option:
-    1) Create a new empty todo list
-    2) Add a new task to the list
-    3) List all the current tasks
-    4) List all todo lists
-    5) Obtain a specific task by id
-    6) Obtain a specific list by id
-    7) Modify a specific task by id
-    8) Delete a specific task
-    9) Search for a task using its title
-    10) Search task by contents
-    11) Exit
+    1) Create a new empty todo list  
+    2) Add a new task to the list  
+    3) List all the current tasks  
+    4) List all todo lists  
+    5) Obtain a specific task by id  
+    6) Obtain a specific list by id  
+    7) Modify a specific task by id  
+    8) Delete a specific task  
+    9) Search for a task using its title  
+    10) Search task by contents 
+    11) Exit 
 > """
 
 
@@ -52,7 +52,7 @@ while True:
         print(">> List ID: " + list_id)
 
     elif option == "2":
-        # Add a new task to the list
+        # Add a new task to the list 
         list_id = input('List ID: ')
         title = input('Task title: ')
         content = input('Task content: ')
@@ -68,9 +68,9 @@ while True:
     elif option == "3":
         # List all the current tasks
         print(">> Displaying all your current tasks\n")
-
+        
         tdls = tdl_manager.get_all_lists()
-
+        
         for v in tdls.values():
             utils.print_tasks(v)
 
@@ -79,7 +79,7 @@ while True:
         print(">> Displaying all your To-Do Lists\n")
 
         tdls = tdl_manager.get_all_lists()
-
+        
         for k, v in zip(tdls.keys(), tdls.values()):
             print("* List: " + k)
             utils.print_tasks(v)
@@ -116,7 +116,7 @@ while True:
         else:
             print("\n>> " + task['Title'] + ": " + task['Task'])
 
-            print(">> Insert new values (press ENTER if no changes needed)")
+            print(">> Complete the info below (press ENTER if no changes are needed)")
             title = input('Task title: ')
             content = input('Task content: ')
 
@@ -136,8 +136,7 @@ while True:
             print("\n(!) We couldn't find a task with ID: " + task_id)
         else:
             print("\n>> " + task['Title'] + ": " + task['Task'])
-            print("(!) This can't be undone")
-            confirm = input("(!) Are you sure you want to delete this task? (y/n): ")
+            confirm = input("(!) Are you sure you want to delete this task? This can't be undone (y/n): ")
 
             if confirm == "y":
                 tdl_manager.delete_task(task_id)

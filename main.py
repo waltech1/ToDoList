@@ -5,7 +5,7 @@ This program will allow you to create, edit, end manage to-do list
 as well to the task in it.
 """
 
-from ToDoListPackage import tdl_manager, utils
+from to_dos import tdl_manager, utils
 
 
 print("""

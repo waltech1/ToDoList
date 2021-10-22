@@ -61,7 +61,10 @@ def get_task(task_id: str) -> str:
     """Search and return the task with the given ID"""
     list_id = task_id.split("T")[0]
 
-    return tdl[list_id][task_id]
+    try:
+        return tdl[list_id][task_id]
+    except KeyError:
+        return None
 
 
 def search_task(title: str = None, content: str = None) -> dict:

@@ -73,7 +73,15 @@ def get_task(task_id: str) -> str:
 def search_task(title: str = None, content: str = None) -> dict:
     """
     Search for a task matching the given title or task content.
-    Return the task if found, else return None
+
+    Return the task if found, else return None.
+    The first matching criteria is the title (if it's provided),
+    else, it's going to compare the content (if it's provided).
+    If the user didn't provide a title nor content, it'll return None.
+
+    Optional keyword arguments:
+    title -- the title of the searched task (default None)
+    content -- the content of the searched task (default None)
     """
     if title is None and content is None:
         return None
@@ -94,7 +102,16 @@ def search_task(title: str = None, content: str = None) -> dict:
 
 
 def update_task(task_id:  str, title: str = None, content: str = None) -> bool:
-    """Modify an existing task by its ID"""
+    """Modify an existing task by its ID.
+
+    Searchs for a task given its ID to modify its title, content, or both.
+    If no title or content is provided (None), it won't make any change
+    to the task.
+
+    Optional keyword arguments:
+    title -- the new title for the task (default None)
+    content -- the new content/description for the task (default None)
+    """
     list_id = task_id.split("T")[0]
 
     # Make sure that the ID is in the To Do List

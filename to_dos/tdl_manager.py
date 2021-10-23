@@ -8,32 +8,32 @@ __version__ = '0.1'
 __author__ = 'Walter Saldaña'
 
 
-# Declare an empty dict to store the tasks
-tdl = {}
+# Declare an empty dict to store the To-Do Lists
+lists_db = {}
 
 
 def get_all_lists() -> dict:
     """Return all the To Do Lists"""
-    return tdl
+    return lists_db
 
 
 def get_list(list_id: str) -> dict:
     """Return the specified To Do List by its ID"""
     try:
-        return tdl[list_id]
+        return lists_db[list_id]
     except KeyError:
         return None
 
 
 def generate_list_id() -> str:
     """Create an ID for a new list."""
-    n = len(tdl) + 1
+    n = len(lists_db) + 1
     return 'L' + str(n)
 
 
 def generate_task_id(list_id: str) -> str:
     """Create an ID for a new task"""
-    n = len(tdl[list_id]) + 1
+    n = len(lists_db[list_id]) + 1
 
     return list_id + 'T' + str(n)
 
@@ -41,7 +41,7 @@ def generate_task_id(list_id: str) -> str:
 def create_new_list() -> str:
     """Add a new list to the manager and return its ID."""
     new_id = generate_list_id()
-    tdl[new_id] = {}
+    lists_db[new_id] = {}
 
     return new_id
 
@@ -53,7 +53,7 @@ def create_new_task(list_id: str, title: str, task: str) -> str:
     except KeyError:
         return None
 
-    tdl[list_id][new_id] = {
+    lists_db[list_id][new_id] = {
         "Title": title,
         "Task": task
     }
@@ -66,7 +66,7 @@ def get_task(task_id: str) -> str:
     list_id = task_id.split("T")[0]
 
     try:
-        return tdl[list_id][task_id]
+        return lists_db[list_id][task_id]
     except KeyError:
         return None
 
@@ -88,7 +88,7 @@ def search_task(title: str = None, content: str = None) -> dict:
         return None
 
     # Iterate all tasklists to find the one that meets the criteria
-    for todo in tdl.values():
+    for todo in lists_db.values():
         for task in todo.values():
             # Check if the title was specified
             # Then check if the title is the one searched
@@ -117,7 +117,7 @@ def update_task(task_id:  str, title: str = None, content: str = None) -> bool:
 
     # Make sure that the ID is in the To Do List
     try:
-        task = tdl[list_id][task_id]
+        task = lists_db[list_id][task_id]
     except KeyError:
         return False
 
@@ -140,7 +140,7 @@ def delete_task(task_id: str) -> bool:
 
     # Make sure that the ID is in the To Do List
     try:
-        del tdl[list_id][task_id]
+        del lists_db[list_id][task_id]
         return True
     except KeyError:
         return False

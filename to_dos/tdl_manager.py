@@ -144,3 +144,11 @@ def delete_task(task_id: str) -> bool:
         return True
     except KeyError:
         return False
+
+
+def main():
+    print("This module must be imported from a script.")
+
+
+if __name__ == "__main__":
+    main()

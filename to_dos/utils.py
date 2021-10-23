@@ -6,6 +6,7 @@ better the to-do list items.
 __version__ = '0.1'
 __author__ = 'Walter Saldaña'
 
+
 def get_list_titles(task: dict, id: str) -> str:
     """
     Return only the title from a task.

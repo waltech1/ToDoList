@@ -5,7 +5,7 @@ This program will allow you to create, edit, end manage to-do list
 as well to the task in it.
 """
 
-from ToDoListPackage import tdl_manager, utils
+from to_dos import tdl_manager, utils
 
 
 print("""
@@ -116,7 +116,7 @@ while True:
         else:
             print("\n>> " + task['Title'] + ": " + task['Task'])
 
-            print(">> Insert new values (press ENTER if no changes needed)")
+            print(">> Insert new values (ENTER to don't change)")
             title = input('Task title: ')
             content = input('Task content: ')
 
@@ -137,7 +137,7 @@ while True:
         else:
             print("\n>> " + task['Title'] + ": " + task['Task'])
             print("(!) This can't be undone")
-            confirm = input("(!) Are you sure you want to delete this task? (y/n): ")
+            confirm = input("(!) Do you want to delete it? (y/n): ")
 
             if confirm == "y":
                 tdl_manager.delete_task(task_id)
